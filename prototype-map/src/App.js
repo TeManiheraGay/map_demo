@@ -57,7 +57,7 @@ export default function App(){
     {
       geocode: [-43.53602636491899, 172.63110825035523],
       popUp: "Hello, i am Christchurch City",
-      image: <img src='/sign_front.jpg' width={250} height={300} center />
+      image: <img src='/sign_front.jpg' width={300} height={350} center />
     },
 
     {
@@ -114,13 +114,20 @@ export default function App(){
        {markers.map((marker) =>(
           <Marker position={marker.geocode} icon={customIcon}>
            <Popup className='popUpContainer'>
-              {marker.popUp}{marker.image}<br />
-              <button
-              onClick={() => {
-                setOpenDrawer(true);
-              }}
-              className='btn-modal'
-              >Open Submission Area</button>
+              <div className='signTitle'>
+                {marker.popUp}
+              </div><br />
+              <div>
+                {marker.image}
+              </div><br />
+              <div className='button-container'>
+                <button
+                onClick={() => {
+                  setOpenDrawer(true);
+                }}
+                className='btn-modal'
+                >Open Submission Area</button>
+              </div>
               {openDrawer && <Drawer />}
            </Popup>
           </Marker>

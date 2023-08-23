@@ -1,3 +1,25 @@
 .map{
     z-index: 1;
 }
+
+.btn-modal{
+    background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.button-container{
+    padding-top: 10px;
+    text-align: center;
+}
+
+.signTitle{
+    text-align: center;
+    font-size: 16px;
+    
+}
