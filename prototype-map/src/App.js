@@ -89,7 +89,7 @@ export default function App(){
 
 
   return(
-
+    <>
     <MapContainer className='map'
     center={center}
     zoom={10}
@@ -128,7 +128,6 @@ export default function App(){
                 className='btn-modal'
                 >Open Submission Area</button>
               </div>
-              {openDrawer && <Drawer />}
            </Popup>
           </Marker>
         ))}
@@ -145,6 +144,15 @@ export default function App(){
         </div>
       </div> */}
     </MapContainer>
+    {
+      <Drawer
+        isOpen={openDrawer}
+        onClose={() => {
+          setOpenDrawer(false);
+        }}
+      />
+    }
+    </>
     // <UseGeoLocation>
     //   <Map/>
     //   {/* <div className='row my-4'>
