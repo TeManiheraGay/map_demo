@@ -1,3 +1,44 @@
-.drawerContainer{
-    z-index: 2;
+.drawerTitle{
+    padding: 24px 32px;
 }
+
+.signType{
+    padding: 24px 32px;
+}
+
+.inputContainer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.signTypeTitle{
+    padding-bottom: 24px;
+}
+
+.btn-submit{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+
+  .imageContainer{
+    padding: 24px 32px;
+  }
+
+  .imageFlex{
+    display: flex;
+    justify-content: space-between
+  }
+
+  .imageBox{
+    padding-bottom: 12px;
+  }
+
+  .snackBar{
+    padding: 12px 24px;
+  }

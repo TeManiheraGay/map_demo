@@ -56,18 +56,21 @@ export default function App(){
   
     {
       geocode: [-43.53602636491899, 172.63110825035523],
-      popUp: "Hello, i am Christchurch City",
-      image: <img src='/sign_front.jpg' width={300} height={350} center />
+      popUp: "RS1",
+      image: <img src='/sign_foot.jpg' width={250} height={300} center />
+      
     },
 
     {
       geocode: [-43.503099898593604, 172.63310329327456],
-      popUp: "Hello, i am St Albans"
+      popUp: "RS6",
+      image: <img src='/white_30_speed.png' width={250} height={300} center />
     },
 
     {
       geocode: [-43.53061086098737, 172.66657726135682],
-      popUp: "Hello, i am Linwood"
+      popUp: "RS6V",
+      image: <img src='/30_speed.png' width={250} height={300} center />
     }
   ];
 
