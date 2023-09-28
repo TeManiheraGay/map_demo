@@ -10,6 +10,7 @@ import {
   FeatureGroup,
   Popup
 } from 'react-leaflet';
+import * as L from "leaflet";
 import 'leaflet/dist/leaflet.css';
 import "leaflet-draw/dist/leaflet.draw.css"
 import MarkerClusterGroup from "react-leaflet-cluster";
@@ -19,7 +20,37 @@ import Map from './components/Map';
 import { UseGeoLocation } from './components/useGeoLocation';
 import Drawer from './components/SubmissionDrawer';
 
+// markers
+const defaultMarkers = [
+  {
+    geocode: [-37.95336247127581, 176.98126593748108],
+    popUp: "Hello, i am Whakatane"
+  },
 
+  {
+    geocode: [-37.75708323492897, 175.28773140218408],
+    popUp: "Hello, i am Waikato",
+  },
+
+  {
+    geocode: [-43.53602636491899, 172.63110825035523],
+    popUp: "RS1 awaiting approval",
+    image: <img src='/sign_foot.jpg' width={250} height={300} center />,   
+    status: "pending" 
+  },
+
+  {
+    geocode: [-43.503099898593604, 172.63310329327456],
+    popUp: "RS6",
+    image: <img src='/white_30_speed.png' width={250} height={300} center />
+  },
+
+  {
+    geocode: [-43.53061086098737, 172.66657726135682],
+    popUp: "RS6V",
+    image: <img src='/30_speed.png' width={250} height={300} center />
+  }
+];
 
 export default function App(){
 
@@ -42,42 +73,19 @@ export default function App(){
 
   const center = [-43.52679233751392, 172.65811563162737]
 
-  // markers
-  const markers = [
-    {
-      geocode: [-37.95336247127581, 176.98126593748108],
-      popUp: "Hello, i am Whakatane"
-    },
-  
-    {
-      geocode: [-37.75708323492897, 175.28773140218408],
-      popUp: "Hello, i am Waikato",
-    },
-  
-    {
-      geocode: [-43.53602636491899, 172.63110825035523],
-      popUp: "RS1",
-      image: <img src='/sign_foot.jpg' width={250} height={300} center />
-      
-    },
-
-    {
-      geocode: [-43.503099898593604, 172.63310329327456],
-      popUp: "RS6",
-      image: <img src='/white_30_speed.png' width={250} height={300} center />
-    },
-
-    {
-      geocode: [-43.53061086098737, 172.66657726135682],
-      popUp: "RS6V",
-      image: <img src='/30_speed.png' width={250} height={300} center />
-    }
-  ];
-
-  const customIcon = new Icon({
+  const redIcon = new Icon({
     iconUrl: "/location-pin.png",
     iconSize: [35, 35]
   })
+
+  const orangeIcon = new Icon({
+    iconUrl: "/orange_location.png",
+    iconSize: [35, 35]
+  })
+
+   const [markers, setMarkers] = useState(defaultMarkers);
+  //  const [buttons, setButton] = useState(buttons);
+
 
   // const showMyLocation = () => {
   //   if( location.loaded && !location.error){
@@ -114,26 +122,34 @@ export default function App(){
       )} */}
 
       <MarkerClusterGroup>
-       {markers.map((marker) =>(
-          <Marker position={marker.geocode} icon={customIcon}>
+       {markers.map((marker) =>{
+        let icon = marker.status === 'pending' ? orangeIcon : redIcon
+        return(
+          <Marker position={marker.geocode} status={marker.status} icon={icon}>
            <Popup className='popUpContainer'>
               <div className='signTitle'>
                 {marker.popUp}
               </div><br />
-              <div>
+              <div className='popupImage'>
                 {marker.image}
               </div><br />
               <div className='button-container'>
-                <button
+              {marker.status === 'pending' ? <button className='btn-modal'>Open Approval page</button> : <button  onClick={() => {
+                setOpenDrawer(true);
+              }}
+              className='btn-modal'>Open Submission Area </button>}
+                {/* <button
                 onClick={() => {
                   setOpenDrawer(true);
                 }}
                 className='btn-modal'
-                >Open Submission Area</button>
+                >Open Submission Area</button> */}
               </div>
            </Popup>
           </Marker>
-        ))}
+        )
+       }
+        )}
       </MarkerClusterGroup>
 
       {/* <div className='row my-4'>

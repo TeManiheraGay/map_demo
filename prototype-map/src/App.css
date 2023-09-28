@@ -11,19 +11,40 @@
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+  flex: auto;
+  margin: 10px;
 }
+
+.btn-modal2{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px;
+  }
 
 .button-container{
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
 }
 
 .signTitle{
     text-align: center;
     font-size: 16px;
-    
+}
+
+.popupImage{
+    text-align: center;
 }
 
 .imageSignFlex{
     display: flex;
     justify-content: space-between;
+
   }
